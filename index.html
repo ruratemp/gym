@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold's Gym - Your Fitness Journey Starts Here</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1a26; /* Dark navy background for a strong gym feel */
+            color: #e0e0e0; /* Light gray text for contrast */
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header {
+            background-color: #1a2c3a; /* Slightly lighter dark blue for header */
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #FFD700; /* Gold color for logo */
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .nav-links a {
+            color: #9ca3af; /* Gray text for nav links */
+            margin-left: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #FFD700; /* Gold on hover */
+        }
+
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1200x600/1a2c3a/FFD700?text=YOUR%20FITNESS%20JOURNEY%20STARTS%20HERE'); /* Placeholder image with overlay */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1; /* Allows hero to take available space */
+        }
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            max-width: 800px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        .hero-section p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            color: #d1d5db;
+        }
+        .cta-button {
+            background-image: linear-gradient(to right, #FFD700 0%, #FFA500 51%, #FFD700 100%); /* Gold to Orange gradient */
+            padding: 1rem 2.5rem;
+            border-radius: 9999px; /* Pill shape */
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: #1a2c3a; /* Dark text on gold */
+            transition: 0.5s;
+            background-size: 200% auto;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            border: none;
+        }
+        .cta-button:hover {
+            background-position: right center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .content-section {
+            padding: 4rem 1rem;
+            background-color: #1a2c3a; /* Dark blue background for content */
+        }
+        .card-container {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(1, minmax(0, 1fr)); /* Single column on small screens */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .card-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two columns on medium screens */
+            }
+            .hero-section h1 {
+                font-size: 4.5rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .card-container {
+                grid-template-columns: repeat(4, minmax(0, 1fr)); /* Four columns on large screens */
+            }
+            .content-section {
+                padding: 5rem 2rem;
+            }
+            .hero-section {
+                padding: 8rem 2rem;
+            }
+        }
+
+        .feature-card {
+            background-color: #2c3e50; /* Darker blue for cards */
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Push button to bottom */
+            height: 100%;
+        }
+        .feature-card h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #FFD700; /* Gold for card titles */
+            margin-bottom: 1rem;
+        }
+        .feature-card p {
+            font-size: 1rem;
+            color: #a0aec0;
+            margin-bottom: 1.5rem;
+            flex-grow: 1; /* Allows paragraph to take space */
+        }
+        .card-button {
+            background-image: linear-gradient(to right, #0F6F50 0%, #17A372 51%, #0F6F50 100%); /* Green gradient */
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            color: white;
+            transition: 0.5s;
+            background-size: 200% auto;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: none;
+            width: 100%; /* Full width button in card */
+        }
+        .card-button:hover {
+            background-position: right center;
+        }
+
+        .footer {
+            background-color: #1a2c3a;
+            color: #9ca3af;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        /* Modal styling (retained from previous version, slightly adjusted for theme) */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: #2c3e50; /* Dark background for modal content */
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+            color: #e0e0e0; /* Light text for modal */
+        }
+        .modal-message {
+            font-size: 1.25rem; /* Larger text for message */
+            margin-bottom: 2rem;
+            color: #FFD700; /* Gold for message text */
+            font-weight: 600;
+        }
+        .modal-close-button {
+            background-color: #DC2626; /* Red color for close button */
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.75rem;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .modal-close-button:hover {
+            background-color: #B91C1C; /* Darker red on hover */
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="logo">GOLD'S GYM</div>
+        <nav class="nav-links hidden md:block">
+            <a href="#" onclick="showCustomMessage('Welcome to our classes! Find your perfect workout.')">Classes</a>
+            <a href="#" onclick="showCustomMessage('Explore our state-of-the-art facilities.')">Facilities</a>
+            <a href="#" onclick="showCustomMessage('Meet our certified and experienced personal trainers.')">Trainers</a>
+            <a href="#" onclick="showCustomMessage('Learn about our flexible membership options.')">Membership</a>
+        </nav>
+        <button class="cta-button md:hidden" onclick="showCustomMessage('Join us today and transform your body!')">Join Now</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1 class="text-white">YOUR FITNESS JOURNEY STARTS HERE.</h1>
+        <p class="text-gray-200">
+            Unleash your potential with world-class equipment, expert trainers, and a motivating community.
+        </p>
+        <button id="heroCtaButton" class="cta-button">START YOUR FREE TRIAL</button>
+    </section>
+
+    <!-- Content Sections (replaces old button container) -->
+    <section class="content-section">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center mb-10 text-gold-500">What We Offer</h2>
+        <div class="card-container">
+            <!-- Card 1: Our Classes -->
+            <div class="feature-card">
+                <h3>Our Classes</h3>
+                <p>From high-energy HIIT to calming Yoga, find a class that fits your style and helps you reach your goals.</p>
+                <button id="classButton" class="card-button">Explore Classes</button>
+            </div>
+
+            <!-- Card 2: World-Class Equipment -->
+            <div class="feature-card">
+                <h3>World-Class Equipment</h3>
+                <p>Train with the best. Our facilities feature cutting-edge cardio, strength, and functional training gear.</p>
+                <button id="equipmentButton" class="card-button">View Equipment</button>
+            </div>
+
+            <!-- Card 3: Expert Trainers -->
+            <div class="feature-card">
+                <h3>Expert Trainers</h3>
+                <p>Achieve personalized results with guidance from our certified personal trainers. Get stronger, faster, better.</p>
+                <button id="trainerButton" class="card-button">Meet Trainers</button>
+            </div>
+
+            <!-- Card 4: Flexible Memberships -->
+            <div class="feature-card">
+                <h3>Flexible Memberships</h3>
+                <p>Choose a plan that works for you. Access all facilities, classes, and member benefits tailored to your needs.</p>
+                <button id="membershipButton" class="card-button">Discover Plans</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        &copy; 2025 Gold's Gym. All rights reserved. | Terms of Use | Privacy Policy
+    </footer>
+
+    <!-- Custom Modal/Message Box -->
+    <div id="customModal" class="modal">
+        <div class="modal-content">
+            <p id="modalMessage" class="modal-message"></p>
+            <button id="closeModalButton" class="modal-close-button">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Get references to elements
+        const customModal = document.getElementById('customModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const closeModalButton = document.getElementById('closeModalButton');
+
+        // Function to show the modal with a specific message
+        function showCustomMessage(message) {
+            modalMessage.textContent = message;
+            customModal.classList.add('active'); // Add 'active' class to make it visible
+        }
+
+        // Function to hide the modal
+        function hideCustomMessage() {
+            customModal.classList.remove('active'); // Remove 'active' class to hide it
+        }
+
+        // Add event listeners to the new buttons
+        document.getElementById('heroCtaButton').addEventListener('click', () => {
+            showCustomMessage('Ready to start your free trial? Sign up now and experience the difference! 🔥');
+        });
+
+        document.getElementById('classButton').addEventListener('click', () => {
+            showCustomMessage('Our diverse class schedule includes Zumba, Spin, Yoga, CrossFit, and more! Join the energy! 🤸‍♀️');
+        });
+
+        document.getElementById('equipmentButton').addEventListener('click', () => {
+            showCustomMessage('Experience the latest in treadmills, ellipticals, free weights, and resistance machines. 💪');
+        });
+
+        document.getElementById('trainerButton').addEventListener('click', () => {
+            showCustomMessage('Connect with a personal trainer to create a custom workout plan and achieve your fitness goals! 🤝');
+        });
+
+        document.getElementById('membershipButton').addEventListener('click', () => {
+            showCustomMessage('We offer daily passes, monthly, quarterly, and annual memberships. Find your perfect fit! 🗓️');
+        });
+
+        // Add event listener to the close button in the modal
+        closeModalButton.addEventListener('click', hideCustomMessage);
+
+        // Optional: Close modal if user clicks outside the content (on the overlay)
+        customModal.addEventListener('click', (event) => {
+            if (event.target === customModal) {
+                hideCustomMessage();
+            }
+        });
+    </script>
+</body>
+</html>
